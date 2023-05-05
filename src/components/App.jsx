@@ -1,16 +1,19 @@
+import { Routes, Route, NavLink } from 'react';
+import React from 'react';
+
+// import { Home } from './Home';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <nav>
+        <NavLink>Home</NavLink>
+      </nav>
+      <Routes>
+        <Route path="/" element={<div>Home</div>}></Route>
+      </Routes>
     </div>
+
   );
 };
+
