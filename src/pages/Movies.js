@@ -1,18 +1,31 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { useEffect } from "react";
+// import { useState } from "react";
+// import fetchMovies from "services/api";
+// import { Link } from "react-router-dom";
 
 
-const Movies = () => {
+// const Movies = () => {
+    // const [movie, setMovie] = useState({
+        // movie: ''
+    // });
+    // const [state, setState] = useState({
+    //     day: ''
+    // });
     // useEffect(() => {
-        
-    // },[])
-    <div>
-        {['movies-1', 'movies-2', 'movies-3'].map(movies => {
+    //     if (movie === '') {
+    //         return;
+    //     }
+    //     fetchMovies(); 
+    // },[movie])
+       
+    //     console.log({  })
+    
+        {/* {['movies-1', 'movies-2', 'movies-3'].map(movies => {
             return <Link key={movies} to={`${movies}`}>{movies}</Link>;   
-        })}
-    </div>
+        })} */}
+    
     // return <div>Movies</div>
     
-};
+// };
 
-export default Movies;
+// export default Movies;

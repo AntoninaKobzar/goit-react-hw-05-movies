@@ -1,15 +1,20 @@
 
-import { useEffect } from "react";
-import fetchMovies from "services/api";
+import { useEffect,useState } from "react";
+import fetchMovies  from "services/api";
 
 
 const Home = () => {
+    const [movie, setMovies] = useState(null);
     useEffect(() => {
-        
-    }, [])
+        if (movie === ''){
+            return;
+        }
+        fetchMovies();
+    }, []);
+    
     
     return (
-            <div>{movies}</div>)
+            <div>{}</div>)
         };
 
 export default Home;
