@@ -1,7 +1,8 @@
 import { Link, Outlet, useParams,useLocation } from "react-router-dom";
 import { fetchDetails } from "../services/api";
 import Reviews from "../components/Reviews";
-import { useEffect, useState,useRef,Suspense } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
+import Notiflix from 'notiflix';
 
 const MovieDetails = () => {
     const location = useLocation();
@@ -19,7 +20,7 @@ const MovieDetails = () => {
             setDataMovie(data);
             setIsLoading(false);
         } catch(error) {
-            console.log('No data');
+            Notiflix.Notify.failure('No data');
 }
     }
     const { title, overview, genres, poster_path, release_date, vote_average } = dataMovie;

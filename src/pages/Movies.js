@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchSearch } from "../services/api";
-import { Link, useSearchParams,useLocation } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
+import Notiflix from 'notiflix';
 
 
 const Movies = () => {
@@ -13,12 +14,12 @@ const Movies = () => {
         if (query) {
             getQueryMovies(query);
         }
-    }, [searchParams]);
+    },[searchParams]);
 
     function onSubmit(e) {
         e.preventDefault();
         const { value } = e.target.query;
-        const query = value.trim() ? { query: value } : {};
+        // const query = value.trim() ? { query: value } : {};
         if (e.target.value === "") {
             return setSearchParam({});
         }
@@ -29,7 +30,7 @@ const Movies = () => {
             const data = await fetchSearch(query);
             setMovies(data);
         } catch(error) {
-            console.log('Sorry,we didn`t find this page.');
+            Notiflix.Notify.failure('Sorry,we didn`t find this page.');
         }
     }
     

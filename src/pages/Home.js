@@ -2,6 +2,7 @@
 import { useEffect,useState } from "react";
 import { fetchTrendMovies } from "../services/api";
 import Movies from "../components/Movies";
+import Notiflix from 'notiflix';
 
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
             setMovies(data);
         }
         catch(error) {
-            console.log("No results");
+            Notiflix.Notify.failure("No results");
         }
     }
     return (

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { fetchReviews } from "../../services/api";
 import { useEffect, useState } from "react";
+import Notiflix from 'notiflix';
 
 const Reviews = () => {
     const { movieId } = useParams();
@@ -13,7 +14,7 @@ const Reviews = () => {
                 const data = await fetchReviews(movieId);
                 setReview(data);
             } catch(error) {
-                console.log("No reviews");
+                Notiflix.Notify.failure("No reviews");
             }
         }
         getReview(movieId);
