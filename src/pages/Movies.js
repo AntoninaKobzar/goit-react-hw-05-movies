@@ -1,31 +1,23 @@
-// import { useEffect } from "react";
-// import { useState } from "react";
-// import fetchMovies from "services/api";
-// import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchTrendMovies } from "services/api";
+import { Link } from "react-router-dom";
 
 
-// const Movies = () => {
-    // const [movie, setMovie] = useState({
-        // movie: ''
-    // });
-    // const [state, setState] = useState({
-    //     day: ''
-    // });
-    // useEffect(() => {
-    //     if (movie === '') {
-    //         return;
-    //     }
-    //     fetchMovies(); 
-    // },[movie])
-       
-    //     console.log({  })
+const Movies = () => {
+    const [movies, setMovies] = useState([]);
+   
+    useEffect(() => {
+        
+        fetchTrendMovies(); 
+    },[])
+    console.log({  })
     
-        {/* {['movies-1', 'movies-2', 'movies-3'].map(movies => {
-            return <Link key={movies} to={`${movies}`}>{movies}</Link>;   
-        })} */}
+        {movies.map(movie => {
+            return <Link key={movie} to={`${movie}`}>{movie}</Link>;   
+        })}
     
-    // return <div>Movies</div>
+    return <div>Movies</div>
     
-// };
+};
 
-// export default Movies;
+export default Movies;

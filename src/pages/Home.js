@@ -1,20 +1,33 @@
 
 import { useEffect,useState } from "react";
-import fetchMovies  from "services/api";
+import { fetchTrendMovies } from "../services/api";
+import Movies from "../components/Movies";
 
 
 const Home = () => {
-    const [movie, setMovies] = useState(null);
+    const [movies, setMovies] = useState([]);
     useEffect(() => {
-        if (movie === ''){
-            return;
-        }
-        fetchMovies();
+        getTrendMovies();
     }, []);
     
-    
+    const getTrendMovies = () => {
+        try {
+            const data = fetchTrendMovies();
+            setMovies(data);
+        }
+        catch {
+            console.error();
+        }
+    }
     return (
-            <div>{}</div>)
+        <>
+            <h1>Trending Today</h1>
+        <div>
+            <Movies movies={movies} /> 
+        </div >
+        </>
+        )
         };
+        
 
 export default Home;
