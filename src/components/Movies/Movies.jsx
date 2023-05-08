@@ -12,11 +12,11 @@ const Movies = ({movies}) => {
     return (
         <div>
             <ul>
-                {movies.map(movie => (
+                {/* {movies.map(movie => (
                     <li key={movie.id}>
                         {movie.title || movie.name}
                     </li>
-                ))}
+                ))} */}
             </ul>
         </div>
     );   

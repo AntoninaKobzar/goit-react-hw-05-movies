@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const Reviews = () => {
     const { movieId } = useParams();
-    const { reiew, setReview } = useState([]);
+    const { review, setReview } = useState([]);
 
 
     useEffect(() => {
@@ -12,15 +12,15 @@ const Reviews = () => {
             try {
                 const data = await fetchReviews(movieId);
                 setReview(data);
-            } catch {
-                console.error();
+            } catch(error) {
+                console.log("No reviews");
             }
         }
         getReview(movieId);
     }, [movieId]);
     return (
         <>
-            {reiew.map(({ author, content, id, author_details: { rating } }) => {
+            {review.map(({ author, content, id, author_details: { rating } }) => {
                 return (
                     <li key={id}>
                         {

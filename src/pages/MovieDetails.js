@@ -1,25 +1,32 @@
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams,useLocation } from "react-router-dom";
 import { fetchDetails } from "../services/api";
 import Reviews from "../components/Reviews";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef,Suspense } from "react";
 
 const MovieDetails = () => {
+    const location = useLocation();
+    // const backLinkLocationRef=useRef(location.state?.from ??"/movies");
     const { movieId } = useParams();
     const [dataMovie, setDataMovie] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
         getMovieDetails(movieId);
     }, [movieId]);
     const getMovieDetails = async (movieId) => {
         try {
+            setIsLoading(true);
             const data = await fetchDetails(movieId);
             setDataMovie(data);
-        } catch {
-            console.error();
+            setIsLoading(false);
+        } catch(error) {
+            console.log('No data');
 }
     }
+    const { title, overview, genres, poster_path, release_date, vote_average } = dataMovie;
     return (
         <>
             <h1>Additional information</h1>
+            <Link to={location.state?.from ??"/movies"}>Go back</Link>
             <ul>
                 <li>
                     <Link to="cast">Cast</Link>
@@ -28,7 +35,9 @@ const MovieDetails = () => {
                     <Link to="reviews">{<Reviews/>}</Link>
                 </li>
             </ul>
-            <Outlet/>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Outlet/>
+            </Suspense>
         </>
     );
 }

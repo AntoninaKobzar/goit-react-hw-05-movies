@@ -15,8 +15,8 @@ const Home = () => {
             const data = fetchTrendMovies();
             setMovies(data);
         }
-        catch {
-            console.error();
+        catch(error) {
+            console.log("No results");
         }
     }
     return (
