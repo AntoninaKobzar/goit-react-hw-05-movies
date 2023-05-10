@@ -19,7 +19,7 @@
         );   
     };
 
-    MoviesList.propTypes = {
-        movies: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
-    };
+    // MoviesList.propTypes = {
+    //     movies: PropTypes.arrayOf(PropTypes.object.isRequired),
+    // };
     export default MoviesList;

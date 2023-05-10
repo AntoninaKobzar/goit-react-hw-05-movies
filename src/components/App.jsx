@@ -4,8 +4,10 @@ import { Routes, Route} from 'react-router-dom';
 import Layout from '../components/Layout';
 import MoviesList from './MoviesList/MoviesList';
 import Reviews from './Reviews/Reviews';
+import Cast from './Cast';
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
+
 
 export const App = () => {
   return (
