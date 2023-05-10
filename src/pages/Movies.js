@@ -35,7 +35,7 @@ const Movies = () => {
     }
     
     
-    const moviesFound = movies.filter(movie => movie.includes(query));
+    // const moviesFound = movies.filter(movie => movie.includes(query));
     
     return (
         <>
@@ -44,7 +44,7 @@ const Movies = () => {
                 <button type="submit">Go</button>
             </form>
             <ul>
-                {moviesFound.map(movie => {
+                {[].map(movie => {
                     return (
                         <li key={movie}><Link to={`${movie}`} state={{from:location}}>{movie}</Link></li>
                     );
