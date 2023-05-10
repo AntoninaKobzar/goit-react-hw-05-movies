@@ -34,8 +34,8 @@
                                             : 'https://kartinkin.net/uploads/posts/2022-03/1647018833_14-kartinkin-net-p-anonim-kartinki-20.jpg'}
                                             width="200"
                                             alt={name} />
-                                        {name}
-                                        {character}
+                                        <h3>{name}</h3>
+                                        <p>{character}</p>
                                     </div>
                                 </li>
                             );

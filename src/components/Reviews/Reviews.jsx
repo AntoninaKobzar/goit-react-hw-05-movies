@@ -6,7 +6,7 @@ import Notiflix from 'notiflix';
 
 const Reviews = () => {
     const { movieId } = useParams();
-    const { review, setReview } = useState([]);
+    const { movieReviews, setReview } = useState(null);
     const { isLoading, setLoading } = useState(false);
 
     useEffect(() => {
@@ -23,9 +23,9 @@ const Reviews = () => {
     }, [movieId]);
     return (
         <>
-            {isLoading === false && review.length === 0 ? (<h2>There are currently no reviews</h2>)
+            {isLoading === false && movieReviews.length === 0 ? (<h2>There are currently no reviews</h2>)
                 : (<div>
-                    {review.map(({ author, content, id, author_details: { rating }, }) => {
+                    {movieReviews.map(({ author, content, id, author_details: { rating }, }) => {
                             return (
                                 <li key={id}>
                                     {
