@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
 import { fetchSearch } from "../services/api";
-import { Link, useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams} from "react-router-dom";
 import Notiflix from 'notiflix';
+import Loader from "components/Loader/Loader";
+import MoviesList from "components/MoviesList";
 
 
 const Movies = () => {
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState(null);
     const [searchParams, setSearchParam] = useSearchParams({});
-    const location = useLocation();
+    const [isLoading, setLoading] = useState(false);
+    // const location = useLocation();
    const query = searchParams.get('query') ?? "";
     useEffect(() => {
         
         if (query) {
             getQueryMovies(query);
         }
-    },[searchParams]);
+    },[query]);
 
     function onSubmit(e) {
         e.preventDefault();
         const { value } = e.target.query;
-        // const query = value.trim() ? { query: value } : {};
+        const query = value.trim() ? { query: value } : {};
+        setSearchParam(query)
         if (e.target.value === "") {
             return setSearchParam({});
         }
@@ -27,8 +31,10 @@ const Movies = () => {
     }
     const getQueryMovies = async (query) => {
         try {
+            setLoading(true);
             const data = await fetchSearch(query);
             setMovies(data);
+            setLoading(false);
         } catch(error) {
             Notiflix.Notify.failure('Sorry,we didn`t find this page.');
         }
@@ -44,16 +50,16 @@ const Movies = () => {
                 <button type="submit">Go</button>
             </form>
             <ul>
-                {[].map(movie => {
+                {isLoading === false && <MoviesList movies={movies} />}
+                {isLoading === true && <Loader />}
+                {/* {[].map(movie => {
                     return (
                         <li key={movie}><Link to={`${movie}`} state={{from:location}}>{movie}</Link></li>
                     );
-                })}
+                })} */}
             </ul>
-                    
-            <div>Movies</div>
         </>
-    ) 
+    ); 
     
 };
 

@@ -1,20 +1,24 @@
 
 import { useEffect,useState } from "react";
 import { fetchTrendMovies } from "../services/api";
-import Movies from "../components/MoviesList";
+import MoviesList from "../components/MoviesList";
 import Notiflix from 'notiflix';
+import Loader from "components/Loader/Loader";
 
 
 const Home = () => {
     const [movies, setMovies] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
         getTrendMovies();
     }, []);
     
     const getTrendMovies = () => {
         try {
+            setIsLoading(true);
             const data = fetchTrendMovies();
             setMovies(data);
+            setIsLoading(false);
         }
         catch(error) {
             Notiflix.Notify.failure("No results");
@@ -23,11 +27,10 @@ const Home = () => {
     return (
         <>
             <h1>Trending Today</h1>
-        <div>
-            <Movies movies={movies} /> 
-        </div >
+            {isLoading === false && <MoviesList movies={movies} />}
+            {isLoading === true && <Loader />}
         </>
-        )
+    );
         };
         
 
