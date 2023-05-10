@@ -1,7 +1,7 @@
 
 import { useEffect,useState } from "react";
 import { fetchTrendMovies } from "../services/api";
-import Movies from "../components/Movies";
+import Movies from "../components/MoviesList";
 import Notiflix from 'notiflix';
 
 
