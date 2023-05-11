@@ -1,8 +1,9 @@
-    import { fetchCast } from '../../services/api';
+    import { fetchCast } from 'services/api';
     import { useEffect, useState } from 'react';
-    import Loader from '../Loader/Loader';
+    import Loader from 'components/Loader';
     import { useParams } from 'react-router-dom';
     import Notiflix from 'notiflix';
+
 
     const Cast = () => {
         const { movieId } = useParams();
@@ -25,8 +26,8 @@
 
         return (
             <>
-                {isLoading === false && (
-                    <ul>{cast.map(({ character, name, profile_path, cast_id }) => {
+                {isLoading === false && cast.length===0 ? (<h2>Sorry,there is no information.</h2>)
+                   :(<ul>{cast.map(({ character, name, profile_path, cast_id }) => {
                             return (
                                 <li key={cast_id}>
                                     <div>
@@ -43,6 +44,7 @@
                     }</ul>
                 )}
                 {isLoading === true && <Loader />}
+                {!cast && <h2>Sorry, we didn`t find this page</h2>}
             </>
         );
     };

@@ -1,9 +1,9 @@
 import { Link, Outlet, useParams,useLocation } from "react-router-dom";
-import { fetchDetails } from "../services/api";
-import Reviews from "../components/Reviews";
+import { fetchDetails } from "services/api";
+import Reviews from "components/Reviews";
 import { useEffect, useState, useRef, Suspense } from "react";
 import Notiflix from 'notiflix';
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 import MovieInfo from 'components/MovieInfo';
 
 const MovieDetails = () => {

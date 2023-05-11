@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { fetchReviews } from "../../services/api";
+import { fetchReviews } from "services/api";
 import { useEffect, useState } from "react";
-import Loader from "components/Loader/Loader";
+import Loader from "components/Loader";
 import Notiflix from 'notiflix';
 
 const Reviews = () => {

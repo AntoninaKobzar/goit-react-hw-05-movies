@@ -8,7 +8,7 @@
         
         return (
                 <ul>
-                    {movies.map(movie => (
+                {movies.map(movie => (
                         <li key={movie.id}>
                             <Link to={`/movies/${movie.id}`} state={{ from: location }}>
                                 {movie.title || movie.name}
@@ -19,7 +19,7 @@
         );   
     };
 
-    // MoviesList.propTypes = {
-    //     movies: PropTypes.arrayOf(PropTypes.object.isRequired),
-    // };
+    MoviesList.propTypes = {
+        movies: PropTypes.arrayOf(PropTypes.object.isRequired),
+    };
     export default MoviesList;

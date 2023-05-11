@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchSearch } from "../services/api";
+import { fetchSearch } from "services/api";
 import { useSearchParams} from "react-router-dom";
 import Notiflix from 'notiflix';
 import Loader from "components/Loader/Loader";
@@ -52,11 +52,6 @@ const Movies = () => {
             <ul>
                 {isLoading === false && <MoviesList movies={movies} />}
                 {isLoading === true && <Loader />}
-                {/* {[].map(movie => {
-                    return (
-                        <li key={movie}><Link to={`${movie}`} state={{from:location}}>{movie}</Link></li>
-                    );
-                })} */}
             </ul>
         </>
     ); 

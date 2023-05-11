@@ -29,17 +29,8 @@ const Home = () => {
     return (
         <>
             <h1>Trending Today</h1>
-             
-        {movies.map(movie => (
-          <li key={movie.id}>
-            {/* <NavLink to={`/movies/${movie.id}`} state={{ from: location }}> */}
-              {movie.title}
-            {/* </NavLink> */}
-          </li>
-        ))}
-    
-            {isLoading === false && <MoviesList movies={movies} />}
-            {isLoading === true && <Loader />}
+            {isLoading === false && <MoviesList movies={movies} />} 
+            {isLoading === true && <Loader />}   
         </>
     );
         };
