@@ -1,61 +1,65 @@
 import { useEffect, useState } from "react";
 import { fetchSearch } from "services/api";
-import { useSearchParams} from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import Notiflix from 'notiflix';
-import Loader from "components/Loader/Loader";
 import MoviesList from "components/MoviesList";
+import SearchForm from "components/SearchForm";
 
 
 const Movies = () => {
-    const [movies, setMovies] = useState(null);
-    const [searchParams, setSearchParam] = useSearchParams({});
-    const [isLoading, setLoading] = useState(false);
-    // const location = useLocation();
-   const query = searchParams.get('query') ?? "";
-    useEffect(() => {
-        
-        if (query) {
-            getQueryMovies(query);
-        }
-    },[query]);
+    const [query, setQuery] = useState('');
+  const [moviesData, setmoviesData] = useState([]);
+const location = useLocation();
+const fromQueryString = location.search.replace(/\?query=/, '');
+    
+    const getQuery = searchName =>
+    searchName === ''
+      ? Notiflix.Notify.failure('Enter the name of the movie')
+      : setQuery(searchName);
 
-    function onSubmit(e) {
-        e.preventDefault();
-        const { value } = e.target.query;
-        const query = value.trim() ? { query: value } : {};
-        setSearchParam(query)
-        if (e.target.value === "") {
-            return setSearchParam({});
-        }
-        setSearchParam({ query:e.target.value});
+  useEffect(() => {
+    if (!query) {
+      return;
     }
-    const getQueryMovies = async (query) => {
-        try {
-            setLoading(true);
-            const data = await fetchSearch(query);
-            setMovies(data);
-            setLoading(false);
-        } catch(error) {
-            Notiflix.Notify.failure('Sorry,we didn`t find this page.');
-        }
+
+    async function fetchData() {
+      try {
+        const response = await fetchSearch(query);
+        const data = response.data.results;
+
+        data.length === 0
+          ? Notiflix.Notify.failure(`Sorry, we can't find any ${query}`)
+          : setmoviesData(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
-    
-    
-    // const moviesFound = movies.filter(movie => movie.includes(query));
-    
-    return (
-        <>
-            <form onSubmit={onSubmit}>
-                <input type="text" name="query" placeholder="Search..." />
-                <button type="submit">Go</button>
-            </form>
-            <ul>
-                {isLoading === false && <MoviesList movies={movies} />}
-                {isLoading === true && <Loader />}
-            </ul>
-        </>
-    ); 
-    
+
+    fetchData();
+  }, [query]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetchSearch(fromQueryString);
+        const data = response.data.results;
+        setmoviesData(data);
+      } catch (error) {
+        Notiflix.Notify.failure('Sorry,smth went wrong.');
+      }
+    }
+    fetchData();
+  }, []);
+
+      return (
+    <>
+      <SearchForm onSubmit={getQuery} />
+
+            {moviesData && <MoviesList moviesData={moviesData} />}
+        
+
+    </>
+  );
 };
 
 export default Movies;

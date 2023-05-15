@@ -5,11 +5,11 @@
 
         const MovieInfo = ({ title, genres, poster_path, release_date, vote_average, overview }) => {
             const location = useLocation();
-            // const backLinkRef = useRef(location.state?.from ?? '/');
+            const backLinkRef = useRef(location.state?.from ?? '/');
 
             return (
                 <>
-                {/* <LinkBack to={backLinkRef.current}>{`<==Back`}</LinkBack> */}
+                <LinkBack to={backLinkRef.current}>{`<==Back`}</LinkBack>
 
                 <img src={poster_path && `https://image.tmdb.org/t/p/w400${poster_path}`} alt={title} />
             <div>
