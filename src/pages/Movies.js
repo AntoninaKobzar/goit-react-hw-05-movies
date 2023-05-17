@@ -8,21 +8,23 @@
 // import SearchForm from "components/SearchForm";
 
 import { useSearchParams } from "react-router-dom";
-import  MoviesList  from "components/MoviesList";
-import  SearchForm  from "components/SearchForm";
-import { fetchSearch } from "services/api";
+import  MoviesList  from "../components/MoviesList";
+import  SearchForm  from "../components/SearchForm";
+import { fetchSearch } from "../services/api";
+// import Notiflix from 'notiflix';
+// import Loader from "../components/Loader/Loader";
 
 const Movies = () => {
   const movies = fetchSearch();
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieName = searchParams.get("name") ?? "";
+  const movieName = searchParams.get("movie") ?? "";
 
   const visibleMovies = movies.filter((movie) =>
     movie.name.toLowerCase().includes(movieName.toLowerCase())
   );
 
-  const updateQueryString = (name) => {
-    const nextParams = name !== "" ? { name } : {};
+  const updateQueryString = (movie) => {
+    const nextParams = movie !== "" ? { movie } : {};
     setSearchParams(nextParams);
   };
 
@@ -39,9 +41,9 @@ export default Movies;
 
 // const Movies = () => {
 //     const [query, setQuery] = useState('');
-//   const [moviesData, setmoviesData] = useState([]);
-// const location = useLocation();
-// const fromQueryString = location.search.replace(/\?query=/, '');
+//     const [moviesData, setmoviesData] = useState([]);
+//     const location = useLocation();
+//     const fromQueryString = location.search.replace(/\?query=/, '');
     
 //     const getQuery = searchName =>
 //     searchName === ''
@@ -70,9 +72,11 @@ export default Movies;
 //   }, [query]);
 
 //   useEffect(() => {
+    
 //     async function fetchData() {
 //       try {
-//         const response = await fetchSearch(fromQueryString);
+//         // const response = await fetchSearch(fromQueryString);
+//         const response = await fetchSearch(query);
 //         const data = response.data.results;
 //         setmoviesData(data);
 //       } catch (error) {
@@ -86,17 +90,17 @@ export default Movies;
 //     <>
 //       <SearchForm onSubmit={getQuery} />
 //       {moviesData && <MoviesList moviesData={moviesData} />}
-       {/* <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
-      <Suspense fallback={<div>Loading subpage...</div>}>
-        <Outlet />
-      </Suspense>  */}
+//        <ul>
+//         <li>
+//           <Link to="cast">Cast</Link>
+//         </li>
+//         <li>
+//           <Link to="reviews">Reviews</Link>
+//         </li>
+//       </ul>
+//       <Suspense fallback={<div>Loading subpage...</div>}>
+//         <Outlet />
+//       </Suspense>  
 
 //     </>
 //   );

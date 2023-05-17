@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from "react";
-import { fetchTrendMovies } from "services/api";
-import MoviesList from "components/MoviesList";
+import { fetchTrendMovies } from "../services/api";
+import MoviesList from "../components/MoviesList";
 import Notiflix from 'notiflix';
-import Loader from "components/Loader/Loader";
+import Loader from "../components/Loader/Loader";
 
 
 const Home = () => {

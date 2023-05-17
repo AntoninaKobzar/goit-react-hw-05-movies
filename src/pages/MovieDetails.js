@@ -1,10 +1,12 @@
 // import { Link, Outlet, useParams,useLocation } from "react-router-dom";
 // import { fetchDetails } from "services/api";
 // import Reviews from "components/Reviews";
+// import Cast from "components/Cast";
 // import { useEffect, useState, useRef, Suspense } from "react";
 // import Notiflix from 'notiflix';
 // import Loader from "components/Loader";
 // import MovieInfo from 'components/MovieInfo';
+// import { BackLink } from "components/BackLink";
 
 
 import { useParams, useLocation } from "react-router-dom";
@@ -34,16 +36,17 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
+
 // const MovieDetails = () => {
 //     const location = useLocation();
-    // const backLinkLocationRef=useRef(location.state?.from ??"/movies");
-    // const { movieId } = useParams();
-    // const [dataMovie, setDataMovie] = useState(null);
-    // const [isLoading, setLoading] = useState(false);
+//     const backLinkHref=useRef(location.state?.from ??"/movies");
+//     const { movieId } = useParams();
+//     const [dataMovie, setDataMovie] = useState(null);
+//     const [isLoading, setLoading] = useState(false);
 
-    // useEffect(() => {
-    //     getMovieDetails(movieId);
-    // }, [movieId]);
+//     useEffect(() => {
+//         getMovieDetails(movieId);
+//     }, [movieId]);
 
 
 //     const getMovieDetails = async (movieId) => {
@@ -55,21 +58,23 @@ export default MovieDetails;
 //         } catch(error) {
 //             Notiflix.Notify.failure('No data');
 // }
-    // }
-    // const { title, overview, genres, poster_path, release_date, vote_average } = dataMovie;
-    // return (
-    //     <>
-    //         {setLoading === false && (
-    //             <>
-    //                 <MovieInfo
-    //                     genres={genres}
-    //                     title={title}
-    //                     overview={overview}
-    //                     vote_average={vote_average}
-    //                     poster_path={poster_path}
-    //                     release_date={release_date}
-    //                 />
-    //             </> 
+//     }
+
+//     const { title, overview, genres, poster_path, release_date, vote_average } = dataMovie;
+//     return (
+//         <>
+//             <BackLink to={backLinkHref}>Back to products</BackLink>
+//             {setLoading === false && (
+//                 <>
+//                     <MovieInfo
+//                         genres={genres}
+//                         title={title}
+//                         overview={overview}
+//                         vote_average={vote_average}
+//                         poster_path={poster_path}
+//                         release_date={release_date}
+//                     />
+//                 </> 
 //                         )}
 //                         {isLoading===true && <Loader/>}
 //             <h1>Additional information</h1>
