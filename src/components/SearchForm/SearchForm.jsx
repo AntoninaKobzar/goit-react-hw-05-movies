@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Notiflix from 'notiflix';
 
-const SearchForm = ({ onSearch }) => {
+const SearchForm = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
 
   const handleSearchInput = e => {
@@ -21,13 +21,9 @@ const SearchForm = ({ onSearch }) => {
       return;
     }
 
-    onSearch(query);
-
-    resetForm();
+    onSubmit(query);
+    setQuery('');
   };
-
-  
-  const resetForm = () => setQuery('');
 
   return (
     <div>
@@ -51,7 +47,7 @@ const SearchForm = ({ onSearch }) => {
 };
 
 SearchForm.propTypes = {
-  onSearch: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchForm;
