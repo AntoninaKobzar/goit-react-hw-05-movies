@@ -36,12 +36,12 @@ const Reviews = () => {
                 <li className={css.reviews} key={id}>
                   {
                     <>
-                      <b>{author}</b>
-                      <p>
+                      <b className={css.author}>{author}</b>
+                      <p className={css.rating}>
                         Rating:
                         {rating ? rating : 'There are currently no ratings'}
                       </p>
-                      <p>{content}</p>
+                      <p className={css.content}>{content}</p>
                     </>
                   }
                 </li>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Notiflix from 'notiflix';
+import css from './SearchForm.module.css';
 
 const SearchForm = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
@@ -27,12 +28,13 @@ const SearchForm = ({ onSubmit }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <button type="submit" title="Go">
+      <form className={css.form} onSubmit={handleSubmit}>
+        <button className={css.btn} type="submit" title="Go">
           <span>Search</span>
         </button>
 
         <input
+          className={css.input}
           type="text"
           name="query"
           value={query}

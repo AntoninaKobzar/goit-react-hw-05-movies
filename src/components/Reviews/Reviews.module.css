@@ -2,3 +2,15 @@
     margin-left: 30px;
     list-style: none;
 }
+.author{
+    color:rgb(40, 19, 238);
+    font-style: italic;
+    font-size: 18px;
+}
+.rating{
+    color: brown;
+    font-weight: 700;
+}
+.content{
+    font-size: 22px;
+}

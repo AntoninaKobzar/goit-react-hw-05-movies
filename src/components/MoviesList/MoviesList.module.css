@@ -3,4 +3,16 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    text-decoration: none;
+   
+}
+
+.item:active,
+.item:hover{
+    color:gray;
+}
+.item{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
 }
