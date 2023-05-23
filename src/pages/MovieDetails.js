@@ -32,10 +32,8 @@ const MovieDetails = () => {
 
   return (
     <main>
-      {/* <BackLink to={backLinkHref.current}>Back to movies</BackLink> */}
-
       <div className={css.btn}>
-        <Link to={backLinkHref.current}>
+        <Link className={css.backlink} to={backLinkHref.current}>
           <HiArrowLeft size="24" />
           Back to movies
         </Link>
@@ -44,11 +42,15 @@ const MovieDetails = () => {
       {movieInfo.length !== 0 && <MovieInfo movieInfo={movieInfo} />}
       <ul className={css.list}>
         <li className={css.item}>
-          <Link to="cast">Cast</Link>
+          <Link className={css.details} to="cast">
+            Cast
+          </Link>
         </li>
 
         <li className={css.item}>
-          <Link to="reviews">Reviews</Link>
+          <Link className={css.details} to="reviews">
+            Reviews
+          </Link>
         </li>
       </ul>
       {error && (

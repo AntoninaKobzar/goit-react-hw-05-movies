@@ -1,4 +1,3 @@
-import css from './App.module.css';
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout';

@@ -1,16 +1,17 @@
-.reviews{
-    margin-left: 30px;
-    list-style: none;
+.reviews {
+  margin-left: 30px;
+  list-style: none;
 }
-.author{
-    color:rgb(40, 19, 238);
-    font-style: italic;
-    font-size: 18px;
+.author {
+  color: rgb(47, 46, 58);
+  font-style: italic;
+  font-size: 18px;
 }
-.rating{
-    color: brown;
-    font-weight: 700;
+.rating {
+  color: brown;
+  font-weight: 700;
+  font-size: 12px;
 }
-.content{
-    font-size: 22px;
+.content {
+  font-size: 16px;
 }
